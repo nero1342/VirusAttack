@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
+
     public float speed = 100f;
     public float _aliveTime = 30f;
     public float maxRangeDrag = 5f;
@@ -44,8 +45,6 @@ public class Gun : MonoBehaviour
         lineRenderer.SetPosition(1, _initialPosition);
         lineRenderer.SetPosition(0, transform.position);
 
-
-    
     }
 
     void CheckDead() {
@@ -86,12 +85,15 @@ public class Gun : MonoBehaviour
     private void OnMouseDrag() {
         Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 diffDistance = _initialPosition - newPosition;
+
+        // Adjust maximum range of dragging 
         float currRangeDrag = Mathf.Min(maxRangeDrag, diffDistance.magnitude);
         diffDistance = diffDistance / diffDistance.magnitude * currRangeDrag;
         newPosition.x = _initialPosition.x - diffDistance.x;
         newPosition.y = _initialPosition.y - diffDistance.y;
-        
         transform.position = new Vector3(newPosition.x, newPosition.y, 0);
+
+        // Rotate direction of gun 
         float angle = Mathf.Atan2(-diffDistance.x, diffDistance.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
@@ -114,10 +116,8 @@ public class Gun : MonoBehaviour
     }
 
     void CheckShoot() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (PlayerPrefs.GetInt ("IsBulletUnlocked") == 1 && Input.GetKeyDown(KeyCode.Space)) {
             Instantiate(_bulletPrefab, transform.position, transform.rotation);
-            // Debug.Log(bullet.transform.forward);
-            // bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.forward * speed);
         }
     }
 }
