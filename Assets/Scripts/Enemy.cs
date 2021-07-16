@@ -6,27 +6,41 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject _explodeEffectPrefab;
 
-    private void destroy() {
-            Instantiate(_explodeEffectPrefab, transform.position, Quaternion.identity);
-            PlayerPrefs.SetInt("MoneyAmount", PlayerPrefs.GetInt("MoneyAmount") + 1);
-            Destroy(gameObject);
-    }
+    bool _hasDied;
+
     private void OnCollisionEnter2D(Collision2D collision) {
+        if (ShouldDieFromCollision(collision)) {
+            Die();
+        }
+    }
+
+    bool ShouldDieFromCollision(Collision2D collision) {
+        if (_hasDied) {
+            return false;
+        }
+
         Gun gun = collision.collider.GetComponent<Gun>();
         if (gun != null) {
-            destroy();
-            return;
+            return true;
         }
 
         Enemy enemy = collision.collider.GetComponent<Enemy>();
         if (enemy != null) {
-            destroy();
-            return;
+            return true;
         }
 
         if (collision.contacts[0].normal.y < -0.5) {
-            destroy();
-            return;
+            return true;
         }
+
+        return false;
+    }
+
+    void Die() {
+        _hasDied = true;
+        Instantiate(_explodeEffectPrefab, transform.position, Quaternion.identity);
+        PlayerPrefs.SetInt("MoneyAmount", PlayerPrefs.GetInt("MoneyAmount") + 1);
+        // Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

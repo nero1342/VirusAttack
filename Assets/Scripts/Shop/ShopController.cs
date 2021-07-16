@@ -46,7 +46,8 @@ public class ShopController : MonoBehaviour
 	public void exitShop()
 	{
 		PlayerPrefs.SetInt ("MoneyAmount", moneyAmount);
-		SceneManager.LoadScene ("GameScene");
+		string previousScene = PlayerPrefs.GetString("PreviousScene");
+		SceneManager.LoadScene (previousScene);
 	}
 
 	// public void resetPlayerPrefs()

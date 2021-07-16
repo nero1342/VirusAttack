@@ -7,13 +7,13 @@ public class Gun : MonoBehaviour
 {
 
     public float speed = 100f;
-    public float _aliveTime = 30f;
+    private float _aliveTime = 3f;
     public float maxRangeDrag = 5f;
     [SerializeField] private GameObject _explodeEffectPrefab, _bulletPrefab;
 
 
-    Vector3 _initialPosition; 
-    bool _makeAShoot = false;
+    Vector3 _initialPosition;
+    private bool _makeAShoot = false;
     Rigidbody2D rigidbody2d;
     LineRenderer lineRenderer;
     // Start is called before the first frame update
@@ -25,11 +25,24 @@ public class Gun : MonoBehaviour
         // lineRenderer.enabled = false;
     }
 
+    void reset()
+    {
+      _aliveTime = 2f;
+      _makeAShoot = false;
+      speed = 300;
+      rigidbody2d.position = _initialPosition;
+      rigidbody2d.gravityScale = 0;
+      rigidbody2d.velocity = new Vector2(0, 0);
+      transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+    }
+
     // Update is called once per frame
     void Update()
     {
-        CheckOutOfScreen();
-        CheckDead();
+        if (isOutOfScene() || isDone()) {
+          reset();
+          return;
+        }
         CheckShoot();
         // Rotate gun according to the direction of movement.
         if (_makeAShoot) {
@@ -47,34 +60,35 @@ public class Gun : MonoBehaviour
 
     }
 
-    void CheckDead() {
+    bool isDone() {
         if (_makeAShoot && rigidbody2d.velocity.magnitude <= 0.1) {
             _aliveTime -= Time.deltaTime;
-            
+
         }
         if (_aliveTime <= 0) {
-            ReloadScene();
+          return true;
         }
-    }
-    void ReloadScene() {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        return false;
     }
 
-    void CheckOutOfScreen() {
-        if (transform.position.x > 10 ||
-            transform.position.y > 10 || 
-            transform.position.x < -10||
+    bool isOutOfScene() {
+        if (transform.position.x > 15 ||
+            transform.position.y > 10 ||
+            transform.position.x < -15||
             transform.position.y < -10) {
-                ReloadScene();
+              return true;
             }
+        return false;
     }
+
     private void OnMouseDown() {
-        GetComponent<SpriteRenderer>().color = Color.red;
-        lineRenderer.enabled = true;
-        
+      if (_makeAShoot) return;
+      GetComponent<SpriteRenderer>().color = Color.red;
+      lineRenderer.enabled = true;
+
     }
     private void OnMouseUp() {
+        if (_makeAShoot) return;
         GetComponent<SpriteRenderer>().color = Color.white;
         Vector2 directionToInitialPosition = _initialPosition - transform.position;
         rigidbody2d.AddForce(directionToInitialPosition * speed);
@@ -83,6 +97,7 @@ public class Gun : MonoBehaviour
         lineRenderer.enabled = false;
     }
     private void OnMouseDrag() {
+        if (_makeAShoot) return;
         Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 diffDistance = _initialPosition - newPosition;
 
@@ -103,16 +118,8 @@ public class Gun : MonoBehaviour
         Obstacle obstacle = collision.collider.GetComponent<Obstacle>();
         if (obstacle != null) {
             Instantiate(_explodeEffectPrefab, transform.position, Quaternion.identity);
-            // yield WaitForSeconds (3.0f);
-            // ReloadScene();
-            WaitForReloadScene(3);
             return;
         }
-    }
-
-    IEnumerator WaitForReloadScene(float time) {
-        yield return new WaitForSeconds (time);
-        ReloadScene();
     }
 
     void CheckShoot() {

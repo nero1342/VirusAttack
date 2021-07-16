@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.DeleteAll ();
         // moneyAmount = PlayerPrefs.GetInt ("MoneyAmount");
 		// isBulletUnlocked = PlayerPrefs.GetInt ("IsBulletUnlocked");
 
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
     public void gotoShop()
 	{
 		PlayerPrefs.SetInt ("MoneyAmount", moneyAmount);
+        PlayerPrefs.SetString ("PreviousScene", SceneManager.GetActiveScene().name);
 		SceneManager.LoadScene ("ShopScene");
 	}
 }
