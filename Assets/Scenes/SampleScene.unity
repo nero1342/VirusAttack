@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 1456043879}
   - component: {fileID: 1456043880}
   - component: {fileID: 1456043881}
+  - component: {fileID: 1456043882}
   m_Layer: 0
   m_Name: spritesheet_power_0
   m_TagString: Untagged
@@ -1194,6 +1195,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   _aliveTime: 3
+--- !u!114 &1456043882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456043875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072e262e165fb444db74ed9d1d48eac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  com: {x: 0, y: 10, z: 0}
+  rb: {fileID: 0}
 --- !u!1 &1605589029
 GameObject:
   m_ObjectHideFlags: 0
