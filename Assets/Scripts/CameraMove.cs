@@ -13,8 +13,8 @@ public Gun gun;
 void Update()
 {
         //drag start
-        return;
-        Debug.Log(gun.gunState);
+        // return;
+        // Debug.Log(gun.gunState);
         if (gun.gunState == GunState.Idle || gun.gunState == GunState.Inactive) {
 
                 if (Input.GetMouseButtonDown(0))

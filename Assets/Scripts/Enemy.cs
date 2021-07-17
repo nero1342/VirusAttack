@@ -41,7 +41,9 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-    void Die() {
+    public void Die() {
+        // Debug.Log(GetComponent<AudioSource>());
+        // GetComponent<AudioSource>().Play(0);
         _hasDied = true;
         Instantiate(_explodeEffectPrefab, transform.position, Quaternion.identity);
         PlayerPrefs.SetInt("MoneyAmount", PlayerPrefs.GetInt("MoneyAmount") + rewardMoney);

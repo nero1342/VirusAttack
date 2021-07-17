@@ -12,5 +12,10 @@ void OnTriggerEnter2D(Collider2D collider)
         {
                 gameController.EndTurn();
         }
+
+        if(tag == "Enemy")
+        {
+                collider.gameObject.GetComponent<Enemy>().Die();
+        }
 }
 }

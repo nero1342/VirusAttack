@@ -26,7 +26,6 @@ void Update()
         {
                 var targetPosition = gunObject.transform.position;
                 float x = Mathf.Clamp(targetPosition.x, minCameraX, maxCameraX);
-                Debug.Log(targetPosition.x);
                 //camera follows bird's x position
                 transform.position = new Vector3(x, StartingPosition.y, StartingPosition.z);
         }

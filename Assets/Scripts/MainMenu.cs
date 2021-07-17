@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()
