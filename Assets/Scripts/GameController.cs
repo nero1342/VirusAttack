@@ -7,30 +7,18 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public Text moneyText;
-	public static int moneyAmount;
-	public int isBulletUnlocked;
-
-    public GameObject bullet;
-
+	int moneyAmount;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.DeleteAll ();
-        // moneyAmount = PlayerPrefs.GetInt ("MoneyAmount");
-		// isBulletUnlocked = PlayerPrefs.GetInt ("IsBulletUnlocked");
-
-        // if (isBulletUnlocked == 1)
-		// 	bullet.SetActive (true);
-		// else
-		// 	bullet.SetActive (false);
+        // PlayerPrefs.DeleteAll ();
     }
 
     // Update is called once per frame
     void Update()
     {
         moneyAmount = PlayerPrefs.GetInt ("MoneyAmount");
-		isBulletUnlocked = PlayerPrefs.GetInt ("IsBulletUnlocked");
-        moneyText.text = "Money: " + moneyAmount.ToString() + "$";
+		moneyText.text = "Money: " + moneyAmount.ToString() + "$";
     }
 
     public void gotoShop()
