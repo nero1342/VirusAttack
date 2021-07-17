@@ -4051,7 +4051,7 @@ MonoBehaviour:
   lifeText: {fileID: 1741983333}
   gunObject: {fileID: 1559984534}
   gameOverScreen: {fileID: 361984940}
-  _nextLevelName: Level_1
+  _nextLevelName: Level_3
   shopButton: {fileID: 75194539}
 --- !u!4 &1790899000
 Transform:

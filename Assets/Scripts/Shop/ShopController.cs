@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ShopController : MonoBehaviour
 {
+
+	[SerializeField] private GameObject _explodeEffectPrefab;
+	[SerializeField] private Transform  _donation;
 int moneyAmount;
 int isBulletUnlocked;
 
@@ -75,6 +78,10 @@ void Update()
 	public void buyVaccine()
 	{
 		moneyAmount -= vaccinePrice;
+		PlayerPrefs.SetInt ("MoneyAmount", moneyAmount);
+		for (int i = 0; i < 10; ++i)
+			Instantiate(_explodeEffectPrefab, _donation.position + (new Vector3(Random.value - 0.5f, Random.value - 0.5f, 0)) * 4, Quaternion.identity);
+        
 	}
 	public void buyLine()
 	{
