@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ShopController : MonoBehaviour
 {
-    int moneyAmount;
-	int isBulletUnlocked;
+int moneyAmount;
+int isBulletUnlocked;
 
 	public Text moneyAmountText;
 	public Text bulletPriceText;
@@ -19,11 +19,11 @@ public class ShopController : MonoBehaviour
     {
 		// PlayerPrefs.DeleteAll ();
         moneyAmount = PlayerPrefs.GetInt ("MoneyAmount");
-    }
+}
 
-    // Update is called once per frame
-    void Update()
-    {
+// Update is called once per frame
+void Update()
+{
         moneyAmountText.text = "Money: " + moneyAmount.ToString() + "$";
 
 		bulletAmount = PlayerPrefs.GetInt ("BulletAmount");

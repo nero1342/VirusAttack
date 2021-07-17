@@ -3,35 +3,32 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour
 {
-  [HideInInspector]
-  public Vector3 StartingPosition;
+[HideInInspector]
+public Vector3 StartingPosition;
 
 
-  private const float minCameraX = 0;
-  private const float maxCameraX = 13;
-  [HideInInspector]
-  public bool IsFollowing;
-  [HideInInspector]
-  public Transform TargetToFollow;
+private const float minCameraX = -2;
+private const float maxCameraX = 13;
+[HideInInspector]
+public bool IsFollowing;
+public GameObject gunObject;
+Gun gun;
 
-  void Start()
-  {
-    StartingPosition = transform.position;
-  }
+void Start()
+{
+        gun = gunObject.GetComponent<Gun>();
+        StartingPosition = transform.position;
+}
 
-  void Update()
-  {
-    if (IsFollowing)
-    {
-      if (TargetToFollow != null)
-      {
-        var targetPosition = TargetToFollow.transform.position;
-        float x = Mathf.Clamp(targetPosition.x, minCameraX, maxCameraX);
-        //camera follows bird's x position
-        transform.position = new Vector3(x, StartingPosition.y, StartingPosition.z);
-      }
-      else
-        IsFollowing = false;
-    }
-  }
+void Update()
+{
+        if (gun.isMove())
+        {
+                var targetPosition = gunObject.transform.position;
+                float x = Mathf.Clamp(targetPosition.x, minCameraX, maxCameraX);
+                Debug.Log(targetPosition.x);
+                //camera follows bird's x position
+                transform.position = new Vector3(x, StartingPosition.y, StartingPosition.z);
+        }
+}
 }
