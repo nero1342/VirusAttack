@@ -12,11 +12,12 @@ public class ShopController : MonoBehaviour
 	public Text moneyAmountText;
 	public Text bulletPriceText;
     int bulletPrice = 5;
-
-	public Button bulletUnlockButton;
+	int bulletAmount;
+	public Button bulletBuyButton;
     // Start is called before the first frame update
     void Start()
     {
+		// PlayerPrefs.DeleteAll ();
         moneyAmount = PlayerPrefs.GetInt ("MoneyAmount");
     }
 
@@ -25,27 +26,23 @@ public class ShopController : MonoBehaviour
     {
         moneyAmountText.text = "Money: " + moneyAmount.ToString() + "$";
 
-		isBulletUnlocked = PlayerPrefs.GetInt ("IsBulletUnlocked");
-        if (isBulletUnlocked == 1) {
-            bulletPriceText.text = "Unlocked!";  
-        }
-   	    if (moneyAmount >= bulletPrice && isBulletUnlocked == 0)
-			bulletUnlockButton.interactable = true;
+		bulletAmount = PlayerPrefs.GetInt ("BulletAmount");
+        if (true || moneyAmount >= bulletPrice)
+			bulletBuyButton.interactable = true;
 		else
-			bulletUnlockButton.interactable = false;	
+			bulletBuyButton.interactable = false;	
     }
 
-    public void unlockBullet()
+    public void buyBullet()
 	{
 		moneyAmount -= bulletPrice;
-		PlayerPrefs.SetInt ("IsBulletUnlocked", 1);
-		bulletPriceText.text = "Unlocked!";
-		bulletUnlockButton.gameObject.SetActive (false);
+		bulletAmount += 1;
+		PlayerPrefs.SetInt ("BulletAmount", bulletAmount);
+		PlayerPrefs.SetInt ("MoneyAmount", moneyAmount);
 	}
 
 	public void exitShop()
 	{
-		PlayerPrefs.SetInt ("MoneyAmount", moneyAmount);
 		string previousScene = PlayerPrefs.GetString("PreviousScene");
 		SceneManager.LoadScene (previousScene);
 	}

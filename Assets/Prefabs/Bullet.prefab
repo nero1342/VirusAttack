@@ -175,3 +175,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   rb: {fileID: 8761479716537121443}
+  _explodeEffectPrefab: {fileID: 1008597643123545199, guid: 9d10b172b58a646109f434477d1ee381, type: 3}

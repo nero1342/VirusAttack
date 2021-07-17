@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public Text moneyText;
-	int moneyAmount;
+    public Text moneyText, bulletText;
+	int moneyAmount, bulletAmount;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +19,9 @@ public class GameController : MonoBehaviour
     {
         moneyAmount = PlayerPrefs.GetInt ("MoneyAmount");
 		moneyText.text = "Money: " + moneyAmount.ToString() + "$";
+
+        bulletAmount = PlayerPrefs.GetInt ("BulletAmount");
+		bulletText.text = "x " + bulletAmount.ToString();
     }
 
     public void gotoShop()

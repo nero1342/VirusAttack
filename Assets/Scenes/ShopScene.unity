@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 673814407}
   - component: {fileID: 673814406}
   m_Layer: 5
-  m_Name: BulletUnlockButton
+  m_Name: BulletBuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 787484673}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: unlockBullet
+        m_MethodName: buyBullet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -646,7 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unlock
+  m_Text: Buy
 --- !u!222 &691146059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyAmountText: {fileID: 860241801}
   bulletPriceText: {fileID: 1437860225}
-  bulletUnlockButton: {fileID: 673814406}
+  bulletBuyButton: {fileID: 673814406}
 --- !u!114 &787484674
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1082625828970822026
+--- !u!1 &4302817939269387709
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1082625828970822023}
-  - component: {fileID: 1082625828970822024}
-  - component: {fileID: 1082625828970822025}
-  - component: {fileID: 1082625828970822021}
-  - component: {fileID: 1082625828970822022}
-  - component: {fileID: 1082625828970822020}
+  - component: {fileID: 4302817939269387696}
+  - component: {fileID: 4302817939269387711}
+  - component: {fileID: 4302817939269387710}
+  - component: {fileID: 4302817939269387698}
+  - component: {fileID: 4302817939269387697}
+  - component: {fileID: 4302817938096871239}
   m_Layer: 0
   m_Name: Virus_3
   m_TagString: Untagged
@@ -21,27 +21,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1082625828970822023
+--- !u!4 &4302817939269387696
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082625828970822026}
+  m_GameObject: {fileID: 4302817939269387709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4223361, y: -1.4130424, z: 1.5059196}
+  m_LocalPosition: {x: 1.55, y: 3.64, z: 1.5059196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1082625828970822024
+--- !u!212 &4302817939269387711
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082625828970822026}
+  m_GameObject: {fileID: 4302817939269387709}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,14 +86,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1082625828970822025
+--- !u!95 &4302817939269387710
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082625828970822026}
+  m_GameObject: {fileID: 4302817939269387709}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0a0bcfb4a1d4e49b9b56958f9e740f7b, type: 2}
@@ -105,14 +105,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &1082625828970822021
+--- !u!50 &4302817939269387698
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082625828970822026}
+  m_GameObject: {fileID: 4302817939269387709}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -126,13 +126,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &1082625828970822022
+--- !u!60 &4302817939269387697
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082625828970822026}
+  m_GameObject: {fileID: 4302817939269387709}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -184,16 +184,20 @@ PolygonCollider2D:
       - {x: 0.35999998, y: -0.28}
       - {x: 0.35999998, y: -0.22999999}
       - {x: 0.28, y: -0.19999999}
---- !u!114 &1082625828970822020
+--- !u!114 &4302817938096871239
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082625828970822026}
+  m_GameObject: {fileID: 4302817939269387709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8198a6d2b9a4e20813b7b27b284018, type: 3}
+  m_Script: {fileID: 11500000, guid: 00fe693e4c99743afa3c324457997afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _explodeEffectPrefab: {fileID: 7299908718519835736, guid: 99480551cfd594024a36e562d9a0f652, type: 3}
+  _maxRange: 3
+  _randomDirection: {x: 0, y: 0, z: 0}
+  _endPosition: {x: 0, y: 0, z: 0}
+  _speed: 1

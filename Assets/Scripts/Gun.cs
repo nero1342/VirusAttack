@@ -123,8 +123,11 @@ public class Gun : MonoBehaviour
     }
 
     void CheckShoot() {
-        if (PlayerPrefs.GetInt ("IsBulletUnlocked") == 1 && Input.GetKeyDown(KeyCode.Space)) {
+        int bulletAmount = PlayerPrefs.GetInt ("BulletAmount");
+        if (bulletAmount > 0 && Input.GetKeyDown(KeyCode.Space)) {
             Instantiate(_bulletPrefab, transform.position, transform.rotation);
+            bulletAmount -= 1;
+            PlayerPrefs.SetInt ("BulletAmount", bulletAmount);
         }
     }
 }

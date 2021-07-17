@@ -7,7 +7,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _explodeEffectPrefab;
 
     bool _hasDied;
-
+    protected Vector3 _initialPosition;
+    public int rewardMoney = 1;
+    protected void Start() {
+        Debug.Log("Emeny start");
+        _initialPosition = transform.position;
+    }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (ShouldDieFromCollision(collision)) {
             Die();
@@ -26,7 +31,7 @@ public class Enemy : MonoBehaviour
 
         Enemy enemy = collision.collider.GetComponent<Enemy>();
         if (enemy != null) {
-            return true;
+            return false;
         }
 
         if (collision.contacts[0].normal.y < -0.5) {
@@ -39,7 +44,7 @@ public class Enemy : MonoBehaviour
     void Die() {
         _hasDied = true;
         Instantiate(_explodeEffectPrefab, transform.position, Quaternion.identity);
-        PlayerPrefs.SetInt("MoneyAmount", PlayerPrefs.GetInt("MoneyAmount") + 1);
+        PlayerPrefs.SetInt("MoneyAmount", PlayerPrefs.GetInt("MoneyAmount") + rewardMoney);
         // Destroy(gameObject);
         gameObject.SetActive(false);
     }
