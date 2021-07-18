@@ -10,7 +10,7 @@
 - Hà Đức Minh Thảo - 18125139
 
 ## Trailer
-- https://youtu.be/EDKV_nIo5M4
+- https://youtu.be/R6wBNm2T_lk
 
 
 ## Demo
